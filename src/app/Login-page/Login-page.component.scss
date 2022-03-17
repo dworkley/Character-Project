@@ -1,0 +1,31 @@
+$primary-color: #48BFE3;
+$Primary-Darker: #5390D9;
+$Primary-Accent: #6930C3;
+$primary-secondary: #72EFDD;
+$primary-secDark: #64DFDF;
+
+.loginText{
+    text-align: center;
+}
+
+.loginGroup{
+    justify-content: center;
+}
+
+.form-control{
+    max-width: 30%;
+}
+
+.loginOption{
+    margin-top: 10%;
+    border: 3px solid $Primary-Darker;
+    border-radius: 30px;
+}
+
+button.submit{
+    margin-left: 39%;
+    min-width: 30%;
+    margin-bottom: 5%;
+}
+
+

@@ -1,0 +1,25 @@
+
+$primary-color: #48BFE3;
+$Primary-Darker: #5390D9;
+$Primary-Accent: #6930C3;
+
+.navBar{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+    margin: 0;
+    list-style: none;
+    background: $primary-color;
+}
+
+.navBar a{
+    text-decoration: none;
+    border-radius: 10px;
+    display: block;
+    padding: 1em;
+    color: white;
+}
+
+.navBar a:hover{
+    background: $Primary-Darker;
+}

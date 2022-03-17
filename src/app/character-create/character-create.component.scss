@@ -1,0 +1,25 @@
+$primary-color: #48BFE3;
+$Primary-Darker: #5390D9;
+$Primary-Accent: #6930C3;
+$primary-secondary: #72EFDD;
+$primary-secDark: #64DFDF;
+
+
+.col{
+    border: 3px solid $Primary-Darker;
+    border-radius: 20px;
+    margin-top: 5%;
+}
+
+.gap{
+    column-gap: 10%;
+}
+
+.segment{
+    border-top: 2px solid $Primary-Darker;
+    border-bottom: 2px solid $Primary-Darker;
+}
+
+.span-fixer span{
+    width: 15%;
+}

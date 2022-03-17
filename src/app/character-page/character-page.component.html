@@ -1,0 +1,73 @@
+
+<div class="container">
+    <div class="row gap">
+     <div class="col">
+        <div class="row">
+            <button type="button" class="btn btn-secondary btn-sm" id="statsBtn" (click)="showStats()">Stats</button>
+            <button type="button" class="btn btn-secondary btn-sm" id="gearBtn" (click)="showGear()">Gear</button>
+            <button type="button" class="btn btn-secondary btn-sm" id="itemsBtn" (click)="showItems()">Items</button>
+        </div>
+        <div class="row">
+            <ng-container *ngIf="showSt">
+                <div class="row">
+                    <p class = col>STR: {{strength}}</p>
+                    <p class = col>INT: {{intelligence}}</p>
+                </div>
+                <div class="row">
+                    <p class = col>CON: {{constitution}}</p>
+                    <p class = col>WIS: {{wisdom}}</p>
+                </div>
+                <div class="row">
+                    <p class = col>DEX: {{dexterity}}</p>
+                    <p class = col>CHA: {{charasma}}</p>
+                </div>
+                <div class = "row">
+                    <p>Weapon: {{weapon}}</p>
+                    <p>Armor: {{armor}}</p>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="showGr">
+                <div class="row">
+                    <select class="form-select weapon" aria-label="Weapon List" (change)="SetWeapon($event)">
+                        <option selected>Select Weapon</option>
+                        <option value="Sword">Sword</option>
+                        <option value="Mace">Mace</option>
+                        <option value="Bow">Bow</option>
+                      </select>
+                </div>
+                <div class = row>
+                    <select class="form-select armor" aria-label="Armor List" (change)="SetArmor($event)">
+                        <option selected>Select Armor</option>
+                        <option value="Leather">Leather</option>
+                        <option value="Chainmail">Chainmail</option>
+                        <option value="Platemail">Platemail</option>
+                      </select>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="showIt">
+                <label for="exampleFormControlTextarea1" class="form-label">Your List of Items</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </ng-container>
+        </div>
+     </div>
+     <div class="col">
+         <div class="row gap CharImage"><img class="CharImage" src="{{RoboText}}"></div>
+        <div class="row main gap">
+            <p class="CharBox">Name: {{Name}}</p>
+            <p class="CharBox">Class: {{Class}}</p>
+        </div>
+        <div class="row secondary gap">
+            <div class="input-group mb-3 playerHP" id="HP">
+                <span class="input-group-text">HP:</span>
+                <input type="text" class="form-control" aria-label="player HP" maxlength="3" step="1">
+                <span class="input-group-text">/{{fullHP}}</span>
+              </div>
+              <div class="input-group mb-3 playerMP" id="MP">
+                <span class="input-group-text">MP:</span>
+                <input type="text" class="form-control" aria-label="player Mana" maxlength="3">
+                <span class="input-group-text">/{{fullMana}}</span>
+              </div>
+        </div>
+     </div>
+    </div>
+</div>

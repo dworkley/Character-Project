@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="row gap">
+        <div class="col">
+            <div class="segment">
+                <h5>Enter some text to generate a character image</h5>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Character Image:</span>
+                    <input name="GenBot" [(ngModel)]="GenBot" id="text"type="text" class="form-control" placeholder="Some Random Text">
+                    <button type="button" class="btn btn-primary" (click)="GenRobot()">Generate</button>
+                </div>
+                <div class="row gap CharImage"><img class="CharImage" src="{{RoboText}}"></div>
+
+            </div>
+            <div class="segment">
+                <h5>Enter a name and pick a class</h5>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">character Name:</span>
+                    <input type="text" class="form-control" placeholder="Robert" aria-label="Character Image">
+                </div>
+                <select class="form-select" aria-label="Class Select" >
+                    <option selected>Cyborg</option>
+                    <option value="Robot">Robot</option>
+                    <option value="Cyborg">Cyborg</option>
+                    <option value="Glitch">Glitch</option>
+                    <option value="Steambot">Steambot</option>
+                  </select>
+            </div>
+            <div class="segment">
+                <h5>Stat point Distribution</h5>
+                <p>Stat Roller Now Included!</p>
+                <div>
+                <button type="button" class="btn btn-primary btn-sm" (click)="Roll()">Roll!</button>
+                <p>Rolled Stat: {{Rolled}}</p>
+                </div>
+                <div class="input-group mb-3 span-fixer">
+                    <span class="input-group-text">STR:</span>
+                    <input type="number" class="form-control" placeholder="0-18" maxlength="2" min="0" max="18">
+                </div>
+                <div class="input-group mb-3 span-fixer">
+                    <span class="input-group-text">CON:</span>
+                    <input type="number" class="form-control" placeholder="0-18" maxlength="2" min="0" max="18">
+                </div>
+                <div class="input-group mb-3 span-fixer">
+                    <span class="input-group-text">DEX:</span>
+                    <input type="number" class="form-control" placeholder="0-18" maxlength="2" min="0" max="18">
+                </div>
+                <div class="input-group mb-3 span-fixer">
+                    <span class="input-group-text">INT:</span>
+                    <input type="number" class="form-control" placeholder="0-18" maxlength="2" min="0" max="18">
+                </div>
+                <div class="input-group mb-3 span-fixer">
+                    <span class="input-group-text">WIS:</span>
+                    <input type="number" class="form-control" placeholder="0-18" maxlength="2" min="0" max="18">
+                </div>
+                <div class="input-group mb-3 span-fixer">
+                    <span class="input-group-text">CHA:</span>
+                    <input type="number" class="form-control" placeholder="0-18" maxlength="2" min="0" max="18">
+                </div>
+                
+            </div>
+
+        </div>
+        <div class="col">
+
+        </div>
+    </div>
+</div>

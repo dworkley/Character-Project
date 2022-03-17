@@ -1,0 +1,74 @@
+$primary-color: #48BFE3;
+$Primary-Darker: #5390D9;
+$Primary-Accent: #6930C3;
+$primary-secondary: #72EFDD;
+$primary-secDark: #64DFDF;
+
+
+.col{
+    border: 3px solid $Primary-Darker;
+    border-radius: 20px;
+    margin-top: 5%;
+}
+
+.gap{
+    column-gap: 10%;
+}
+
+img, svg {
+    vertical-align: middle;
+    margin: auto;
+}
+
+.playerHP,.playerMP{
+    width: 60%;
+    margin-left: auto;
+}
+
+input#HP, input#MP{
+    text-align: right;
+}
+
+//if screen is large , shrink the character image to half size
+@media screen and (min-width: 900px) {
+    img{ width: 50% !important; height: 50% !important;}
+}
+@media screen and (max-width: 300px) {
+        .btn-secondary{ font-size: 11px;}
+}
+
+.CharBox{
+    font-size: large;
+}
+.main{
+    border: 3px solid $Primary-Darker;
+    border-radius: 10px;
+}
+.secondary{
+    border: 3px solid $Primary-Darker;
+    border-radius: 10px;
+}
+
+.btn-secondary{
+    max-width: 33.3%;
+    border: 1px solid $Primary-Accent;
+}
+
+
+.HPBar{
+    
+    display: inline;
+    float: right;
+    background: rgb(255,0,0);
+    background: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(204,0,0,1) 50%, rgba(48,5,5,1) 100%);
+}
+
+.MPBar{
+    display: inline;
+    float: right;
+    background: rgb(0,255,248);
+    background: linear-gradient(90deg, rgba(0,255,248,1) 0%, rgba(21,202,203,1) 50%, rgba(0,31,80,1) 100%);
+}
+
+
+

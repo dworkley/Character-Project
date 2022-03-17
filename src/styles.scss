@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+//pallet colors
+$primary-color: #48BFE3;
+$Primary-Darker: #5390D9;
+$Primary-Accent: #6930C3;
+$primary-secondary: #72EFDD;
+$primary-secDark: #64DFDF;
+
+$grid-breakpoints:(
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1400
+);
+
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
