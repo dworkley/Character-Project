@@ -133,23 +133,17 @@ export class CharHandlerService{
   
   } */
 
-  GetFromServer(data: string): Observable<CharSheet[]>
+  GetFromServer(data: string)//: Observable<CharSheet[]>
   {
     let url = `https://localhost:7015/api/CharSheets/GetCharacters/{request}?request=${data}`;
     console.log("fetching server data...")
     //call the api function , expect an array of charsheets -> bring the data in as such
-    return this.http.get<CharSheet[]>(url)//.pipe(map(data => _.values(data)));
+    return this.http.get<CharSheet[]>(url, {responseType: 'json'})//.pipe(map(data => _.values(data)));
     //return Characters$;
+    //.pipe(map((response: Response) => {return <CharSheet>response.json()});
   }
 
-  mockGetFromServer(data: String)
-  {
-    //testing a call to another trial methode on the api
-    let url = `https://localhost:7015/api/CharSheets/GetCharacters2/{request}?request=${data}`;
-
-    this.http.get(url).subscribe(resualt => {console.log(resualt)})
-  }
-
+  
   private HandleError(error: HttpErrorResponse)
   {
     if(error.status === 400)
