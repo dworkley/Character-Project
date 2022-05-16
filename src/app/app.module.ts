@@ -14,7 +14,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ApiLoginService } from './api-login.service';
 import { CharHandlerService } from './services/char-handler.service';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
-import { TestingComponent } from './testing/testing.component';
 
 
 
@@ -27,7 +26,6 @@ import { TestingComponent } from './testing/testing.component';
     LoginPageComponent,
     CharacterCreateComponent,
     ProfilePageComponent,
-    TestingComponent,
 
   ],
   imports: [

@@ -17,7 +17,7 @@ import * as _ from 'lodash';
 export class ProfilePageComponent implements OnInit {
 
   characters: Array<CharSheet> = new Array;
-  characters2: Array<CharSheet> = new Array;
+  characters2: CharSheet[] = new Array;
   Character = '';
   Characters!: Observable<CharSheet[]>; 
 
@@ -69,7 +69,15 @@ export class ProfilePageComponent implements OnInit {
     console.log("running service")
     //send to console that this methode ran for debugging
     
-    this.Characters= this.charHandlerService.GetFromServer(this.profileName)
+    this.charHandlerService.GetFromServer(this.profileName).subscribe(
+      (data: CharSheet[]) => this.characters2 = data
+    )
+      console.log("data from server retrieved , attempting to print out data")
+      console.log(this.characters2.length + "found data")
+    for(var i =0; i < this.characters2.length; i++)
+    {
+      console.log(this.characters2[i])//log the stored data
+    }
 
   }
 

@@ -5,7 +5,7 @@ import { catchError, Observable, throwError, map, tap} from 'rxjs';
 import { JwtHandlerService } from './jwt-handler.service';
 import * as _ from 'lodash';
 
-interface IServerData
+interface IServerData //used for attempting to handle json data while testing
 {
   "username": string,
   "CharImage": string,
@@ -30,8 +30,8 @@ export class CharHandlerService{
 
   readonly CharSheetApiUrl = 'https://localhost:7015/api/CharSheets'
 
-  public characters: Array<CharSheet> = new Array;
-  public characters2: Array<CharSheet> = new Array;
+  public characters: Array<CharSheet> = new Array; //the array storing local data for temporary usage
+  public characters2: Array<CharSheet> = new Array; //array i'm trying to store server data to
   public Character: string = '';
   
 
@@ -136,10 +136,10 @@ export class CharHandlerService{
   GetFromServer(data: string): Observable<CharSheet[]>
   {
     let url = `https://localhost:7015/api/CharSheets/GetCharacters/{request}?request=${data}`;
-
-    var Characters$ = this.http.get<CharSheet[]>(url).pipe(map(data => _.values(data)));
-    return Characters$;
-
+    console.log("fetching server data...")
+    //call the api function , expect an array of charsheets -> bring the data in as such
+    return this.http.get<CharSheet[]>(url)//.pipe(map(data => _.values(data)));
+    //return Characters$;
   }
 
   mockGetFromServer(data: String)
