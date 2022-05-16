@@ -4,13 +4,13 @@
             <h1 class="loginText">Login</h1>
             <div class="input-group mb-3 loginGroup">
                 <span class="input-group-text" id="inputGroup-sizing-default">UserName:</span>
-                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                <input id="LoginName" [(ngModel)]="LoginName" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
             </div>
             <div class="input-group mb-3 loginGroup">
                 <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
-                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                <input id="LoginPassword" [(ngModel)]="LoginPassword" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
             </div>
-            <button type="button" class="btn btn-outline-primary submit">Submit</button>
+            <button (click)="Login()" type="button" class="btn btn-outline-primary submit">Submit</button>
         </div>
     </div>
 
@@ -19,13 +19,13 @@
             <h1 class="loginText">Signup</h1>
             <div class="input-group mb-3 loginGroup">
                 <span class="input-group-text" id="inputGroup-sizing-default">UserName:</span>
-                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                <input id="RegisterName" [(ngModel)]="RegisterName"  type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
             </div>
             <div class="input-group mb-3 loginGroup">
                 <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
-                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                <input id="RegisterPassword" [(ngModel)]="RegisterPassword"  type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
             </div>
-            <button type="button" class="btn btn-outline-primary submit">Submit</button>
+            <button (click)="RegisterUser()" type="button" class="btn btn-outline-primary submit">Submit</button>
         </div>
     </div>
 </div>

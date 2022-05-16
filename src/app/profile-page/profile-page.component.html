@@ -1,0 +1,40 @@
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <h1>Character Catalog</h1>
+                    <p>Select Your Champion !</p>
+                </div>
+                <div class="row signup">
+                    <tr *ngFor="let character of characters; let i = index" class="CharList">
+                        <td (click)="NavToCharacter(character.CharName)">{{character.CharName}} the {{character.CharClass}}</td>
+                    </tr>
+                    <button routerLink="/Create" class="btn btn-outline-primary" type="button">New Character</button>
+                    <button (click)="logCharData()" class="btn btn-outline-primary" type="button">console-log</button>
+                </div>
+                
+            </div>
+            <div class="col">
+                <div class="row border">
+                    <h3>placeholder image</h3>
+                </div>
+                <div class ="row border">
+                    <p class="profileName">{{profileName}}</p>
+                    <p class="profileInfo">Member since:</p>
+                    <p class="profileInfo">number of adventures:</p>
+                </div>
+                <div class="row edit">
+                    <button class="btn btn-outline-primary" type="button">Edit</button>
+                </div>
+                <div class="row edit">
+                    <button (click)="LogOut()" class="btn btn-outline-primary" type="button">Logout</button>
+                </div>
+                <div class="row logout">
+                   
+                </div>
+            
+            </div>
+        </div>
+    </div>
+    </body>

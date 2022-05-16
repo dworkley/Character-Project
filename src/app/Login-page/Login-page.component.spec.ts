@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ApiLoginService } from '../api-login.service';
+import { Router } from '@angular/router';
 
 import { LoginPageComponent } from './Login-page.component';
 
@@ -8,7 +10,8 @@ describe('LoginPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LoginPageComponent ]
+      declarations: [ LoginPageComponent ],
+      providers:[{provide: ApiLoginService, useValue: ApiLoginServiceStub},{provide: Router, useValue : RouterStub}]
     })
     .compileComponents();
   });
@@ -22,4 +25,10 @@ describe('LoginPageComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  let ApiLoginServiceStub: Partial<ApiLoginService>;
+  ApiLoginServiceStub = {};
+
+  let RouterStub: Partial<Router>;
+  RouterStub = {};
 });

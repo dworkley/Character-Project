@@ -1,8 +1,9 @@
 <ul class="navBar">
     <li><a routerLink="/Home">Home</a></li>
-    <li><a routerLink="/Character">Character</a></li>
-    <li><a routerLink="/Create">New Hero</a></li>
-    <li><a routerLink="/login">Login</a></li>
+    <!--li><a routerLink="/Character">Character</a></li-->
+    <li *ngIf="LoggedIn == true"><a routerLink="/Create">New Hero</a></li>
+    <li *ngIf="!LoggedIn"><a routerLink="/login">Login</a></li>
+    <li *ngIf="LoggedIn == true"><a routerLink="/profile">Profile</a></li>
   </ul>
   
 <router-outlet></router-outlet>

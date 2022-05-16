@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { JwtHandlerService } from './services/jwt-handler.service';
 
 
 @Component({
@@ -7,6 +8,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+  constructor(private jwtHanlderService: JwtHandlerService){}
   title = 'Character-Project';
+  LoggedIn: boolean = false;
+
+  public UpdatePage()
+  {
+    this.LoggedIn = this.jwtHanlderService.UpdateLoggedInStatus();
+  }
 
 }

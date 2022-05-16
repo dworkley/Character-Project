@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { HttpServiceService } from './http-service.service';
+import { CharHandlerService } from './char-handler.service';
 
-describe('HttpServiceService', () => {
-  let service: HttpServiceService;
+describe('CharHandlerService', () => {
+  let service: CharHandlerService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(HttpServiceService);
+    service = TestBed.inject(CharHandlerService);
   });
 
   it('should be created', () => {

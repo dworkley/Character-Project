@@ -5,7 +5,7 @@
                 <h5>Enter some text to generate a character image</h5>
                 <div class="input-group mb-3">
                     <span class="input-group-text">Character Image:</span>
-                    <input name="GenBot" [(ngModel)]="GenBot" id="text"type="text" class="form-control" placeholder="Some Random Text">
+                    <input name="GenBot" [(ngModel)]="Genbot" id="text"type="text" class="form-control" placeholder="Some Random Text">
                     <button type="button" class="btn btn-primary" (click)="GenRobot()">Generate</button>
                 </div>
                 <div class="row gap CharImage"><img class="CharImage" src="{{RoboText}}"></div>
@@ -15,9 +15,9 @@
                 <h5>Enter a name and pick a class</h5>
                 <div class="input-group mb-3">
                     <span class="input-group-text">character Name:</span>
-                    <input type="text" class="form-control" placeholder="Robert" aria-label="Character Image">
+                    <input [(ngModel)]="BotName" type="text" class="form-control" placeholder="Robert" aria-label="Character Image">
                 </div>
-                <select class="form-select" aria-label="Class Select" >
+                <select [(ngModel)]="CharClass" class="form-select" aria-label="Class Select" >
                     <option selected>Cyborg</option>
                     <option value="Robot">Robot</option>
                     <option value="Cyborg">Cyborg</option>
@@ -29,39 +29,41 @@
                 <h5>Stat point Distribution</h5>
                 <p>Stat Roller Now Included!</p>
                 <div>
-                <button type="button" class="btn btn-primary btn-sm" (click)="Roll()">Roll!</button>
+                <button type="button" class="btn btn-primary btn-sm" (click)="DiceRoller()">Roll!</button>
                 <p>Rolled Stat: {{Rolled}}</p>
                 </div>
                 <div class="input-group mb-3 span-fixer">
                     <span class="input-group-text">STR:</span>
-                    <input type="number" class="form-control" placeholder="0-18" maxlength="2" min="0" max="18">
+                    <input [(ngModel)]="CharStr" type="number" class="form-control" placeholder="3-18" maxlength="2" min="3" max="18">
                 </div>
                 <div class="input-group mb-3 span-fixer">
                     <span class="input-group-text">CON:</span>
-                    <input type="number" class="form-control" placeholder="0-18" maxlength="2" min="0" max="18">
+                    <input [(ngModel)]="CharCon" type="number" class="form-control" placeholder="3-18" maxlength="2" min="3" max="18">
                 </div>
                 <div class="input-group mb-3 span-fixer">
                     <span class="input-group-text">DEX:</span>
-                    <input type="number" class="form-control" placeholder="0-18" maxlength="2" min="0" max="18">
+                    <input [(ngModel)]="CharDex" type="number" class="form-control" placeholder="3-18" maxlength="2" min="3" max="18">
                 </div>
                 <div class="input-group mb-3 span-fixer">
                     <span class="input-group-text">INT:</span>
-                    <input type="number" class="form-control" placeholder="0-18" maxlength="2" min="0" max="18">
+                    <input [(ngModel)]="CharInt" type="number" class="form-control" placeholder="3-18" maxlength="2" min="3" max="18">
                 </div>
                 <div class="input-group mb-3 span-fixer">
                     <span class="input-group-text">WIS:</span>
-                    <input type="number" class="form-control" placeholder="0-18" maxlength="2" min="0" max="18">
+                    <input [(ngModel)]="CharWis" type="number" class="form-control" placeholder="3-18" maxlength="2" min="3" max="18">
                 </div>
                 <div class="input-group mb-3 span-fixer">
                     <span class="input-group-text">CHA:</span>
-                    <input type="number" class="form-control" placeholder="0-18" maxlength="2" min="0" max="18">
+                    <input [(ngModel)]="CharCha" type="number" class="form-control" placeholder="3-18" maxlength="2" min="3" max="18">
                 </div>
-                
+                <div class = "input-group mb-3">
+                    <button (click)="GenerateChar()" type="button" class="btn btn-primary saveBtn">Save</button>
+                </div>
             </div>
 
         </div>
-        <div class="col">
+        <!--<div class="col">
 
-        </div>
+        </div>-->
     </div>
 </div>
