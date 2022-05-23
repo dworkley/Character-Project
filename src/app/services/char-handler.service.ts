@@ -1,25 +1,10 @@
 import { Injectable } from '@angular/core';
 import { CharSheet } from '../Models/CharSheet';
-import {HttpClient, HttpErrorResponse, HttpResponse} from '@angular/common/http'
-import { catchError, Observable, throwError, map, tap} from 'rxjs';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http'
+import { catchError, Observable, throwError, map, tap, pipe} from 'rxjs';
 import { JwtHandlerService } from './jwt-handler.service';
-import * as _ from 'lodash';
 
-interface IServerData //used for attempting to handle json data while testing
-{
-  "username": string,
-  "CharImage": string,
-  "CharName": string,
-  "CharClass": string,
-  "CharHp": number,
-  "CharMp": number,
-  "CharStr": number,
-  "CharDex": number,
-  "CharCon": number,
-  "CharWis": number,
-  "CharInt": number,
-  "CharCha": number
-}
+
 
 @Injectable({
   providedIn: 'root'
@@ -33,8 +18,8 @@ export class CharHandlerService{
   public characters: Array<CharSheet> = new Array; //the array storing local data for temporary usage
   public characters2: Array<CharSheet> = new Array; //array i'm trying to store server data to
   public Character: string = '';
+  public chars! : CharSheet[];
   
-
  
   constructor(private http:HttpClient, private jwtHandlerService: JwtHandlerService) { }
 
@@ -56,7 +41,9 @@ export class CharHandlerService{
   GetSingleChar()
   {
     //search the array for the character by name and return the charSheet for that character
-    return this.characters.find(char => char.CharName === this.Character);
+    //return this.characters.find(char => char.CharName === this.Character);
+  
+    return this.chars.find(charsheet => charsheet.CharName === this.Character);
   }
 
   SavetoServer(data: CharSheet)
@@ -137,12 +124,20 @@ export class CharHandlerService{
   {
     let url = `https://localhost:7015/api/CharSheets/GetCharacters/{request}?request=${data}`;
     console.log("fetching server data...")
-    //call the api function , expect an array of charsheets -> bring the data in as such
-    return this.http.get<CharSheet[]>(url, {responseType: 'json'})//.pipe(map(data => _.values(data)));
-    //return Characters$;
-    //.pipe(map((response: Response) => {return <CharSheet>response.json()});
-  }
 
+    //call the api function , expect an array of charsheets -> bring the data in as such
+    return this.http.get<CharSheet[]>(url) //make the http call to the api, have json data formatted as an array of CharSheet objects 
+    .subscribe((response: CharSheet[]) => { //take the response and act on it
+      console.log(response); //log the response from the API
+      this.chars = response; //store the data inside this array of charsheet objects
+      console.log("stored characters: " + this.chars.length);
+      console.log(this.chars[0].CharName); //this is working
+      console.log(response[0].CharStr); // this is not working for some reason ...
+       //checking to get object data from inside the array
+
+    });
+    
+  }
   
   private HandleError(error: HttpErrorResponse)
   {
@@ -156,31 +151,46 @@ export class CharHandlerService{
     return throwError(() => new Error('something odd occured, please try again'));
   }
 
-}
-//if(Array.isArray(response)) true
+  //the interface data used in the below test methode
+  /*interface UserData {
+    id: number,
+    name: String,
+    username: String,
+    email: String,
+    address: {
+      street: string,
+      suite?: string,
+      city: string,
+      zipcode: string,
+      geo : {
+        lat: string,
+        lng: string
+      }
+    }
+    phone: string,
+    website: string,
+    company : {
+      name: string,
+      catchPhrase: string,
+      bs: string
+    }
+  }*/
 
-      /*for(var i in response) // tested , array length 2 -> (0,1), of objects
-      {
-        
-        if(response[i].hasOwnProperty('CharName'))
-        {
-          console.log("charname exists")
-        };
-      }*/
-      
-    /*return this.http.get<IServerData[]>(url,{responseType: 'json'}).pipe(
-      map(obj => obj.map((sp): CharSheet =>({ //map the returned server product
-        username: sp.username,
-        CharImage: sp.CharImage,
-        CharName: sp.CharName,
-        CharClass: sp.CharClass,
-        CharHp: sp.CharHp,
-        CharMp: sp.CharMp,
-        CharStr: sp.CharStr,
-        CharCon: sp.CharCon,
-        CharDex: sp.CharDex,
-        CharWis: sp.CharWis,
-        CharInt: sp.CharInt,
-        CharCha: sp.CharCha,
-      })))
-    )*/
+  //testing methode for learning data retreival : SQL_Server -> API -> Front End
+  /*async GetUserData()
+  {
+    let url = `https://jsonplaceholder.typicode.com/users`
+    var users!: UserData[];
+
+     this.http.get<UserData[]>(url)
+    .subscribe((response) => {
+      console.log(response);
+      users = response;
+      console.log(users.length);
+      console.log(users[0].name);
+    });
+
+  }*/
+
+}
+

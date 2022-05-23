@@ -51,7 +51,7 @@ export class LoginPageComponent implements OnInit {
     //this.router.navigateByUrl('');
   }
 
-  Login()
+   Login()
   {
     //set the user object and token variable 
     let User = {userName: this.LoginName, userPass: this.LoginPassword};
@@ -68,8 +68,10 @@ export class LoginPageComponent implements OnInit {
         this.jwtHandlerService.FakeTokenData = User.userName;
         this.jwtHandlerService.LogFakeData();
         this.appComponent.UpdatePage();
-        this.charHandlerService.GetFromServer(this.LoginName);
-        this.profilePageComponent.LoadCharacters(); //char data from service -> component
+        setTimeout(() => {this.charHandlerService.GetFromServer(this.LoginName)}, 500,)
+        
+        this.profilePageComponent.LoadCharacters();
+         //char data from service -> component
         //this.Waiterfunction(); //load the char data but force it to wait
         //this.router.navigateByUrl('profile'); //send to the profile page on success
         //setTimeout(() =>{this.router.navigateByUrl('profile')},5000);
