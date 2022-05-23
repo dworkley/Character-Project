@@ -3,10 +3,8 @@ import { CharHandlerService } from '../services/char-handler.service';
 import {Router} from '@angular/router';
 import { CharSheet } from '../Models/CharSheet';
 import { JwtHandlerService } from '../services/jwt-handler.service';
-import { Observable, map} from 'rxjs';
+import { Observable, map, tap, Subscription,} from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import * as _ from 'lodash';
-
 
 
 @Component({
@@ -16,22 +14,21 @@ import * as _ from 'lodash';
 })
 export class ProfilePageComponent implements OnInit {
 
-  characters: Array<CharSheet> = new Array;
-  characters2: CharSheet[] = new Array;
-  Character = '';
-  Characters!: Observable<CharSheet[]>; 
-
   constructor(private charHandlerService: CharHandlerService, private router: Router,
               private jwtHandlerService: JwtHandlerService, private http: HttpClient) {
    }
 
+    //Character = '';
+  characters: Array<CharSheet> = new Array;
+  characters2: CharSheet[] = [];
   profileName = this.jwtHandlerService.GetUserName();
   name = '';
 
+
     ngOnInit(): void {
-    //console.log(this.charHandlerService.characters.length + "characters found in memory");
-    this.characters = this.charHandlerService.GetCharList();
-    this.Characters= this.http.get<CharSheet[]>(`https://localhost:7015/api/CharSheets/GetCharacters/{request}?request=${this.profileName}`).pipe(map(data => _.values(data)));
+    //this.characters = this.charHandlerService.GetCharList(); locally saved data call.
+    console.log("Finished Getting Server Data")
+    this.logCharData();
     
   }
 
@@ -54,7 +51,7 @@ export class ProfilePageComponent implements OnInit {
 
   LoadCharacters()
     {
-      //clook for any characters from the server
+      //look for any characters from the "server" , locally saved version
       console.log("checking for characters...")
       console.log(this.charHandlerService.characters2.length + " found")
       for(var i = 0; i < this.charHandlerService.characters2.length; i++)
@@ -69,57 +66,22 @@ export class ProfilePageComponent implements OnInit {
     console.log("running service")
     //send to console that this methode ran for debugging
     
-    this.charHandlerService.GetFromServer(this.profileName).subscribe(
-      (data: CharSheet[]) => this.characters2 = data
-    )
-      console.log("data from server retrieved , attempting to print out data")
-      console.log(this.characters2.length + "found data")
-    for(var i =0; i < this.characters2.length; i++)
-    {
-      console.log(this.characters2[i])//log the stored data
-    }
+    //this.charHandlerService.GetFromServer(this.profileName);
+    
+    console.log("attempting to retrive data from the service")
+    //console.log(this.charHandlerService.chars.length);
+  
 
+      console.log("logging found characters")
+      this.characters2 = this.charHandlerService.chars; //correctly passing data to this component
+      console.log(this.characters2); //test if their storing to this component
+
+      
+    
+    
+    //call the testing methode on the service
+    //this.charHandlerService.GetUserData();
   }
 
  
 }
-
-//this.charHandlerService.GetFromServer(this.profileName)/*.subscribe((response: CharSheet[]) => {
-      //console.log("log data: \n" + response)
-    //})
-      /*console.log(response)
-      
-      var newChar = {} as CharSheet;
-      newChar.username = response.username,
-      newChar.CharImage = response.CharImage,
-      newChar.CharName = response.CharName,
-      newChar.CharClass = response.CharClass,
-      newChar.CharHp = response.CharHp,
-      newChar.CharMp = response.CharMp,
-      newChar.CharStr = response.CharStr,
-      newChar.CharCon = response.CharCon,
-      newChar.CharDex = response.CharDex,
-      newChar.CharInt = response.CharInt,
-      newChar.CharWis = response.CharWis,
-      newChar.CharCha = response.CharCha
-      console.log(newChar)
-      
-      
-      
-      var newChar2 = {} as CharSheet;
-      newChar2.username = response.username,
-      newChar2.CharImage = response.CharImage,
-      newChar2.CharName = response.CharName,
-      newChar2.CharClass = response.CharClass,
-      newChar2.CharHp = response.CharHp,
-      newChar2.CharMp = response.CharMp,
-      newChar2.CharStr = response.CharStr,
-      newChar2.CharCon = response.CharCon,
-      newChar2.CharDex = response.CharDex,
-      newChar2.CharInt = response.CharInt,
-      newChar2.CharWis = response.CharWis,
-      newChar2.CharCha = response.CharCha
-      
-      console.log(newChar2);
-      
-    })*/

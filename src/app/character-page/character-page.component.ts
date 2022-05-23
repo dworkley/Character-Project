@@ -1,4 +1,5 @@
 import { Component, OnInit} from '@angular/core';
+import { CharSheet } from '../Models/CharSheet';
 //import { CharSheet } from '../Models/CharSheet';
 import { CharHandlerService } from '../services/char-handler.service';
 
@@ -66,9 +67,11 @@ export class CharacterPageComponent implements OnInit {
 
   PageBuilder() // methode to get/set all the char data upon navigating to the page
   {
-    var character = this.charHandlerService.GetSingleChar();
+    var character = this.charHandlerService.GetSingleChar(); //get from locally stored data retreived from the server for the logged in person
+    
     console.log("Loading from memory... ");
-    console.log(character);
+    console.log(character!.CharClass);
+    
 
     this.Name = character!.CharName;
     this.Class = character!.CharClass;

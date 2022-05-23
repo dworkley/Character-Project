@@ -1,4 +1,12 @@
 <body>
+    <!--div *ngIf="!characters2.length">
+        <div class="d-flex justify-content-center">
+            <div class="spinner-border text-info" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+          </div>
+    </div-->
+
     <div class="container-fluid">
         <div class="row">
             <div class="col">
@@ -7,8 +15,8 @@
                     <p>Select Your Champion !</p>
                 </div>
                 <div class="row signup">
-                    <tr *ngFor="let character of characters; let i = index" class="CharList">
-                        <td (click)="NavToCharacter(character.CharName)">{{character.CharName}} the {{character.CharClass}}</td>
+                    <tr *ngFor="let character2 of characters2; let i = index" class="CharList">
+                        <td (click)="NavToCharacter(character2.CharName)">{{character2.CharName}} the {{character2.CharClass}}</td>
                     </tr>
                     <button routerLink="/Create" class="btn btn-outline-primary" type="button">New Character</button>
                     <button (click)="logCharData()" class="btn btn-outline-primary" type="button">console-log</button>
@@ -30,9 +38,7 @@
                 <div class="row edit">
                     <button (click)="LogOut()" class="btn btn-outline-primary" type="button">Logout</button>
                 </div>
-                <div class="row logout">
-                   
-                </div>
+                
             
             </div>
         </div>
