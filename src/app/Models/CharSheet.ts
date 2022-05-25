@@ -9,11 +9,11 @@ export interface CharSheet
     CharHp: number;
     CharMp: number;
 
-    CharStr: number;
-    CharDex: number;
-    CharCon: number;
-    CharWis: number;
-    CharInt: number;
-    CharCha: number;
+    CharSTR: number;
+    CharDEX: number;
+    CharCON: number;
+    CharWIS: number;
+    CharINT: number;
+    CharCHA: number;
 
 }

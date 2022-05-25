@@ -76,12 +76,12 @@ export class CharacterPageComponent implements OnInit {
     this.Name = character!.CharName;
     this.Class = character!.CharClass;
     this.RoboText = character!.CharImage;
-    this.strength = character!.CharStr;
-    this.constitution = character!.CharCon;
-    this.dexterity = character!.CharDex;
-    this.intelligence = character!.CharInt;
-    this.wisdom = character!.CharWis;
-    this.charasma = character!.CharCha;
+    this.strength = character!.CharSTR;
+    this.constitution = character!.CharCON;
+    this.dexterity = character!.CharDEX;
+    this.intelligence = character!.CharINT;
+    this.wisdom = character!.CharWIS;
+    this.charasma = character!.CharCHA;
 
     
   }

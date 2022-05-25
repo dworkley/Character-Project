@@ -13,7 +13,7 @@ import { JwtHandlerService } from './jwt-handler.service';
 
 export class CharHandlerService{
 
-  readonly CharSheetApiUrl = 'https://localhost:7015/api/CharSheets'
+  readonly CharSheetApiUrl = 'https://localhost:7015/api/CharSheets1'
 
   public characters: Array<CharSheet> = new Array; //the array storing local data for temporary usage
   public characters2: Array<CharSheet> = new Array; //array i'm trying to store server data to
@@ -53,17 +53,17 @@ export class CharHandlerService{
     {
       //"charId": 0, //auto sets on server side , but keeping the code here for now
       "username": this.jwtHandlerService.FakeTokenData, //the user this char belongs to from fake token data
-      "charImgString": data.CharImage.toString(),
-      "charName": data.CharName,
-      "class": data.CharClass,
-      "charHp": data.CharHp.toString(),
-      "charMp": data.CharMp.toString(),
-      "str": data.CharStr,
-      "con": data.CharCon,
-      "dex": data.CharDex,
-      "wis": data.CharWis,
-      "int": data.CharInt,
-      "cha": data.CharCha
+      "CharImage": data.CharImage.toString(),
+      "CharName": data.CharName,
+      "CharClass": data.CharClass,
+      "CharHp": data.CharHp.toString(),
+      "CharMp": data.CharMp.toString(),
+      "CharSTR": data.CharSTR,
+      "CharCon": data.CharCON,
+      "CharDex": data.CharDEX,
+      "CharWIS": data.CharWIS,
+      "CharINT": data.CharINT,
+      "CharCHA": data.CharCHA
     }
 
     //send the object to the API -> saved to server
@@ -71,6 +71,7 @@ export class CharHandlerService{
     //pipe to the catch error function
   }
 
+  //old methode i commented out to save the code if i needed it later
  /* GetFromServer(data: string): Observable<Array<CharSheet>>
   {
     var GetUrl = `https://localhost:7015/api/CharSheets/GetCharacters/{request}?request=${data}`
@@ -126,13 +127,15 @@ export class CharHandlerService{
     console.log("fetching server data...")
 
     //call the api function , expect an array of charsheets -> bring the data in as such
-    return this.http.get<CharSheet[]>(url) //make the http call to the api, have json data formatted as an array of CharSheet objects 
+    return this.http.get<CharSheet[]>(url, {responseType: 'json'}) //make the http call to the api, have json data formatted as an array of CharSheet objects 
     .subscribe((response: CharSheet[]) => { //take the response and act on it
       console.log(response); //log the response from the API
       this.chars = response; //store the data inside this array of charsheet objects
       console.log("stored characters: " + this.chars.length);
       console.log(this.chars[0].CharName); //this is working
-      console.log(response[0].CharStr); // this is not working for some reason ...
+      console.log(response[0].CharSTR); // this is not working for some reason ...
+      
+      //console.log(response[0].hasOwnProperty.call(CharSheet, 'CharClass')
        //checking to get object data from inside the array
 
     });

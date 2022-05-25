@@ -60,12 +60,12 @@ export class CharacterCreateComponent implements OnInit {
       CharClass: this.CharClass,
       CharHp: initialHP,
       CharMp: InitialMP,
-      CharStr: this.CharStr,
-      CharDex: this.CharDex,
-      CharCon: this.CharCon,
-      CharWis: this.CharWis,
-      CharInt: this.CharInt,
-      CharCha: this.CharCha,
+      CharSTR: this.CharStr,
+      CharDEX: this.CharDex,
+      CharCON: this.CharCon,
+      CharWIS: this.CharWis,
+      CharINT: this.CharInt,
+      CharCHA: this.CharCha,
                 };
     console.log(CharSheet);
 
