@@ -123,7 +123,7 @@ export class CharHandlerService{
 
   GetFromServer(data: string)//: Observable<CharSheet[]>
   {
-    let url = `https://localhost:7015/api/CharSheets/GetCharacters/{request}?request=${data}`;
+    let url = `https://localhost:7015/api/CharSheets1/GetCharacters/{request}?request=${data}`;
     console.log("fetching server data...")
 
     //call the api function , expect an array of charsheets -> bring the data in as such

@@ -1,8 +1,10 @@
 import { ViewportScroller } from '@angular/common';
 import { Component,OnInit} from '@angular/core';
 //import {NgForm, FormsModule} from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 import { CharHandlerService } from '../services/char-handler.service';
 import { JwtHandlerService } from '../services/jwt-handler.service';
+import { ClassGetService } from '../services/class-get.service';
 
 
 @Component({
@@ -15,13 +17,15 @@ export class CharacterCreateComponent implements OnInit {
 
   
   constructor(private charHandler: CharHandlerService, private viewPortScroller: ViewportScroller,
-              private jwtHandlerService: JwtHandlerService ) { }
+              private jwtHandlerService: JwtHandlerService, private classGet: ClassGetService ) { }
 
 
   Genbot = '';
   Rbot: string = 'TestBot';
   Rolled: string = '';
   RoboText: string = `https://robohash.org/${this.Rbot}.png`;
+
+  ClassList: string[] = [];
 
   BotName: string = '';
   CharClass: string ='';
@@ -33,6 +37,8 @@ export class CharacterCreateComponent implements OnInit {
   CharCha: number = 0;
 
   ngOnInit(): void {
+    //this.classGet.GetClasses();
+    this.GetClassData();
   }
 
   DiceRoller(){
@@ -155,6 +161,13 @@ export class CharacterCreateComponent implements OnInit {
     this.CharCha = 0;
 
     this.viewPortScroller.scrollToPosition([0,0])
+  }
+
+  async GetClassData()
+  {
+    console.log("running service to fecth class data...")
+    await this.classGet.GetClasses();
+    console.log("service finished running")
   }
 
 }
